@@ -1,0 +1,26 @@
+Arrival order : Ana(S3) Bala(S1) Chitra(S3) Dev(S5) Esha(S1) Farid(S2) Gita(S3) Hari(S1)
+Expected by hand (S1 by arrival, then S2, S3 by arrival, S5): Bala Esha Hari Farid Ana Chitra Gita Dev
+System.out.println(pq) shows the HEAP ARRAY, not treatment order: [Bala(S1), Esha(S1), Farid(S2), Hari(S1), Ana(S3), Chitra(S3), Gita(S3), Dev(S5)]
+poll() order observed                                        : Bala Esha Hari Farid Ana Chitra Gita Dev
+matches hand-computed order: true
+
+Growth of PriorityQueue (average of 5 runs after 2 warm-ups): ns per admit and ns per serve
+           n       ns/admit       ns/serve serve ratio vs prev
+      10,000            139            576                -
+     100,000             33            223             0.39
+   1,000,000             93            364             1.63
+(ns/serve should grow ~log n: x10 in n adds only a small constant, not x10)
+
+Alternatives: total time (ms) to admit n random-severity patients then serve all, single run after warm-up
+         n    PriorityQueue sorted LinkedList    5 FIFO queues
+     2,000             0.52             9.96             2.89
+    10,000             1.84           180.29             6.74
+    40,000             7.91          9464.93             0.59
+
+Starvation simulation: tick 0 a severity-5 patient (Zed) arrives; then every tick 2 new severity-1 patients arrive and the doctor serves 1 patient.
+  strict: Zed STILL WAITING after 3000 ticks (starved)
+  aging : Zed served after waiting 401 ticks
+  aging also keeps severity order when no one has waited long: next 3 of a fresh AgingTriage ->
+  k(S1) l(S3) m(S5)
+
+Deployment check: admitting and serving 5,000 patients took 1.464 ms in total (1464 us per day-total, i.e. 0.29 us per patient)

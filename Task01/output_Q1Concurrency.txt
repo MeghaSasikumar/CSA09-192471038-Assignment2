@@ -1,0 +1,5 @@
+8 threads x 50,000 appends to ONE shared log, 5 rounds each
+shared StringBuilder         correct rounds: 1/5, rounds with exception: 4, worst chars lost: 1600000
+shared StringBuffer          correct rounds: 5/5, rounds with exception: 0, worst chars lost: 0
+per-thread StringBuilder     correct rounds: 5/5, rounds with exception: 0, worst chars lost: 0
+single thread, 3000000 appends: StringBuilder 16.6 ms, StringBuffer 62.9 ms

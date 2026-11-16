@@ -1,0 +1,151 @@
+workload,approach,run,ms,bytes_per_ticket
+W1-short,+ operator,0,20.533341,896
+W1-short,+ operator,1,33.780761,896
+W1-short,+ operator,2,40.338901,896
+W1-short,+ operator,3,26.281339,896
+W1-short,+ operator,4,17.747245,896
+W1-short,StringBuilder,0,39.674644,528
+W1-short,StringBuilder,1,40.376911,528
+W1-short,StringBuilder,2,34.034608,528
+W1-short,StringBuilder,3,41.818013,528
+W1-short,StringBuilder,4,42.644393,528
+W1-short,StringBuffer,0,58.493951,536
+W1-short,StringBuffer,1,19.439276,536
+W1-short,StringBuffer,2,18.912485,536
+W1-short,StringBuffer,3,19.063768,536
+W1-short,StringBuffer,4,19.500602,536
+W1-short,String.join,0,13.378465,384
+W1-short,String.join,1,13.193473,384
+W1-short,String.join,2,13.410068,384
+W1-short,String.join,3,13.45419,384
+W1-short,String.join,4,13.439545,384
+W1-short,StringJoiner,0,18.757024,216
+W1-short,StringJoiner,1,10.467975,216
+W1-short,StringJoiner,2,10.1288,216
+W1-short,StringJoiner,3,9.929868,216
+W1-short,StringJoiner,4,10.041495,216
+W1-short,String.format,0,68.757203,1304
+W1-short,String.format,1,71.258352,1304
+W1-short,String.format,2,65.247207,1304
+W1-short,String.format,3,66.154298,1304
+W1-short,String.format,4,66.098124,1304
+W2-50fields,+ operator,0,12.743011,23160
+W2-50fields,+ operator,1,12.586828,23160
+W2-50fields,+ operator,2,12.552202,23160
+W2-50fields,+ operator,3,12.499703,23160
+W2-50fields,+ operator,4,12.477724,23160
+W2-50fields,StringBuilder,0,3.947102,3296
+W2-50fields,StringBuilder,1,3.926977,3296
+W2-50fields,StringBuilder,2,4.264743,3296
+W2-50fields,StringBuilder,3,3.929824,3296
+W2-50fields,StringBuilder,4,3.858205,3296
+W2-50fields,StringBuffer,0,4.585747,3304
+W2-50fields,StringBuffer,1,4.678601,3304
+W2-50fields,StringBuffer,2,4.584712,3304
+W2-50fields,StringBuffer,3,4.515061,3304
+W2-50fields,StringBuffer,4,4.641429,3304
+W2-50fields,String.join,0,3.607173,1960
+W2-50fields,String.join,1,3.611711,1960
+W2-50fields,String.join,2,3.58174,1960
+W2-50fields,String.join,3,3.553818,1960
+W2-50fields,String.join,4,3.510021,1960
+W2-50fields,StringJoiner,0,5.359176,1456
+W2-50fields,StringJoiner,1,5.323611,1456
+W2-50fields,StringJoiner,2,6.846504,1456
+W2-50fields,StringJoiner,3,5.567686,1456
+W2-50fields,StringJoiner,4,4.974595,1456
+W2-50fields,String.format,0,16.412654,7712
+W2-50fields,String.format,1,15.736323,7712
+W2-50fields,String.format,2,15.776367,7712
+W2-50fields,String.format,3,15.889129,7712
+W2-50fields,String.format,4,16.279212,7712
+W3-own-large,+ operator,0,128.473104,36165688
+W3-own-large,+ operator,1,123.018366,36165688
+W3-own-large,+ operator,2,125.527135,36165688
+W3-own-large,+ operator,3,126.678004,36165688
+W3-own-large,+ operator,4,141.70635,36165688
+W3-own-large,StringBuilder,0,0.775039,110640
+W3-own-large,StringBuilder,1,0.791568,110640
+W3-own-large,StringBuilder,2,0.876725,110640
+W3-own-large,StringBuilder,3,0.773362,110640
+W3-own-large,StringBuilder,4,0.745227,110640
+W3-own-large,StringBuffer,0,0.949883,110648
+W3-own-large,StringBuffer,1,0.999892,110648
+W3-own-large,StringBuffer,2,0.841773,110648
+W3-own-large,StringBuffer,3,0.801698,110648
+W3-own-large,StringBuffer,4,0.928125,110648
+W3-own-large,String.join,0,0.806515,81440
+W3-own-large,String.join,1,0.784896,81440
+W3-own-large,String.join,2,0.906752,81440
+W3-own-large,String.join,3,0.807651,81440
+W3-own-large,String.join,4,0.807674,81440
+W3-own-large,StringJoiner,0,1.204918,53248
+W3-own-large,StringJoiner,1,1.051318,53248
+W3-own-large,StringJoiner,2,1.072757,53248
+W3-own-large,StringJoiner,3,1.060911,53248
+W3-own-large,StringJoiner,4,1.102214,53248
+W3-own-large,String.format,0,3.166291,278944
+W3-own-large,String.format,1,3.509346,278944
+W3-own-large,String.format,2,3.344417,278944
+W3-own-large,String.format,3,3.968201,278944
+W3-own-large,String.format,4,3.471274,278944
+scale-250,+ operator,0,47.052442,548936
+scale-250,+ operator,1,69.113185,548936
+scale-250,+ operator,2,51.901901,548936
+scale-250,+ operator,3,50.426514,548936
+scale-250,+ operator,4,52.486505,548936
+scale-250,StringBuilder,0,7.065919,13768
+scale-250,StringBuilder,1,6.18202,13768
+scale-250,StringBuilder,2,5.266759,13768
+scale-250,StringBuilder,3,5.594014,13768
+scale-250,StringBuilder,4,5.582682,13768
+scale-500,+ operator,0,98.853237,2211152
+scale-500,+ operator,1,113.719955,2211152
+scale-500,+ operator,2,111.043791,2211152
+scale-500,+ operator,3,110.185685,2211152
+scale-500,+ operator,4,150.54934,2211152
+scale-500,StringBuilder,0,5.327951,27472
+scale-500,StringBuilder,1,5.803936,27472
+scale-500,StringBuilder,2,5.380969,27472
+scale-500,StringBuilder,3,5.68039,27472
+scale-500,StringBuilder,4,5.36391,27472
+scale-1000,+ operator,0,223.100988,8890080
+scale-1000,+ operator,1,290.962946,8890080
+scale-1000,+ operator,2,222.578864,8890080
+scale-1000,+ operator,3,231.620388,8890080
+scale-1000,+ operator,4,215.168496,8890080
+scale-1000,StringBuilder,0,3.117192,54872
+scale-1000,StringBuilder,1,3.160162,54872
+scale-1000,StringBuilder,2,3.136835,54872
+scale-1000,StringBuilder,3,3.23835,54872
+scale-1000,StringBuilder,4,3.180205,54872
+scale-2000,+ operator,0,537.358888,36165688
+scale-2000,+ operator,1,546.346727,36165688
+scale-2000,+ operator,2,548.068709,36165688
+scale-2000,+ operator,3,569.584165,36165688
+scale-2000,+ operator,4,569.450182,36165688
+scale-2000,StringBuilder,0,3.108224,110640
+scale-2000,StringBuilder,1,3.202559,110640
+scale-2000,StringBuilder,2,3.078561,110640
+scale-2000,StringBuilder,3,3.080333,110640
+scale-2000,StringBuilder,4,3.087743,110640
+scale-4000,+ operator,0,1128.799669,147386928
+scale-4000,+ operator,1,1101.891208,147386928
+scale-4000,+ operator,2,1105.788953,147386928
+scale-4000,+ operator,3,1203.244421,147386928
+scale-4000,+ operator,4,1284.142819,147386928
+scale-4000,StringBuilder,0,3.949126,369640
+scale-4000,StringBuilder,1,4.02977,369640
+scale-4000,StringBuilder,2,6.573359,369640
+scale-4000,StringBuilder,3,5.63588,369640
+scale-4000,StringBuilder,4,6.302595,369640
+scale-8000,+ operator,0,2359.687677,596509304
+scale-8000,+ operator,1,2468.347889,596509304
+scale-8000,+ operator,2,2560.963336,596509304
+scale-8000,+ operator,3,2515.280709,596509304
+scale-8000,+ operator,4,2576.575413,596509304
+scale-8000,StringBuilder,0,3.748443,740128
+scale-8000,StringBuilder,1,3.793217,740128
+scale-8000,StringBuilder,2,3.84267,740128
+scale-8000,StringBuilder,3,3.961685,740128
+scale-8000,StringBuilder,4,3.740244,740128

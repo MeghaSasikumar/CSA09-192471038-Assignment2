@@ -1,0 +1,31 @@
+
+======== N = 1,000 medicines ========
+structure      put all ms    100k get ms     ns per get   native iter ms code-order rpt ms  order=code? order=added?
+HashMap              0.11           3.30             33             0.17             2.52        false        false
+LinkedHashMap        1.05           4.04             40             0.08             1.50        false         true
+TreeMap              0.36          45.46            455             0.15             0.15         true        false
+Hashtable            0.21           4.67             47             0.13             0.99        false        false
+(order= columns compare the map's OWN iteration order with the required order; Hashtable also iterates in hash order, not insertion/code order)
+insertion-order report from TreeMap using a side ArrayList of codes: 0.16 ms (log n lookups per entry) + n extra references
+sorted array: build(sort)=1.74 ms, 100k binarySearch gets=13.27 ms (133 ns each), 1000 inserts (incl. copying the table once)= 5.11 ms; TreeMap copy+1000 inserts=5.42 ms; HashMap copy+1000 inserts=3.58 ms
+
+======== N = 20,000 medicines ========
+structure      put all ms    100k get ms     ns per get   native iter ms code-order rpt ms  order=code? order=added?
+HashMap              2.91           5.00             50             1.58            13.52        false        false
+LinkedHashMap        4.49           5.41             54             0.34            14.88        false         true
+TreeMap             11.86          32.87            329             0.34             3.76         true        false
+Hashtable            1.82           2.03             20             0.26             9.86        false        false
+(order= columns compare the map's OWN iteration order with the required order; Hashtable also iterates in hash order, not insertion/code order)
+insertion-order report from TreeMap using a side ArrayList of codes: 15.60 ms (log n lookups per entry) + n extra references
+sorted array: build(sort)=19.68 ms, 100k binarySearch gets=66.45 ms (665 ns each), 1000 inserts (incl. copying the table once)= 1.88 ms; TreeMap copy+1000 inserts=3.85 ms; HashMap copy+1000 inserts=5.87 ms
+
+======== N = 200,000 medicines ========
+structure      put all ms    100k get ms     ns per get   native iter ms code-order rpt ms  order=code? order=added?
+HashMap             15.09           8.30             83            17.32            93.40        false        false
+LinkedHashMap       10.63           5.75             57             1.23           133.79        false         true
+TreeMap            194.35          93.90            939             8.65             9.70         true        false
+Hashtable           13.03           6.32             63             9.79            73.74        false        false
+(order= columns compare the map's OWN iteration order with the required order; Hashtable also iterates in hash order, not insertion/code order)
+insertion-order report from TreeMap using a side ArrayList of codes: 199.31 ms (log n lookups per entry) + n extra references
+sorted array: build(sort)=139.33 ms, 100k binarySearch gets=120.32 ms (1203 ns each), 1000 inserts (incl. copying the table once)= 1.48 ms; TreeMap copy+1000 inserts=5.90 ms; HashMap copy+1000 inserts=17.40 ms
+sink=3047375065

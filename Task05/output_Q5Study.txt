@@ -1,0 +1,23 @@
+DATA SET 1 (ties on points, on points+goalDiff, and on all three levels' prefixes)
+expected by hand: [Eagles(9,6), Lions(9,6), Bisons(9,4), Panthers(9,4), Dragons(6,3), Aces(6,1), Cobras(6,1), Falcons(3,0), Hawks(3,0), Tigers(3,-2)]
+observed         : [Eagles(9,6), Lions(9,6), Bisons(9,4), Panthers(9,4), Dragons(6,3), Aces(6,1), Cobras(6,1), Falcons(3,0), Hawks(3,0), Tigers(3,-2)]
+same after shuffling the input (input-order independent): true
+
+DATA SET 2 (extreme points + identical teams) - violations (antisymmetry, transitivity, equal-consistency):
+  GOOD (comparingInt.reversed.thenComparing)    -> [0, 0, 0]
+  SUBTRACT (b.points - a.points)                -> [0, 33, 0]
+  NO_NAME (ignores name tie-break)              -> [0, 0, 0]
+  NEVER_ZERO (ties return 1)                    -> [13, 0, 0]
+  Why SUBTRACT breaks: compare(MAX_VALUE, -5): -5 - MAX_VALUE = -(MAX+5) overflows to a positive number, so A looks WORSE than B, while B vs C, C vs A are fine -> cycle. 'Equal teams E,F,G' under NO_NAME are ordered by whichever came first (not input independent):
+  NO_NAME: input [Panthers,Bisons] -> [Panthers(9,4), Bisons(9,4)] ; input [Bisons,Panthers] -> [Bisons(9,4), Panthers(9,4)]   (different result for the same data)
+  sort of 200 random-int-points teams with GOOD (comparingInt.reversed.thenComparing): no exception (result may still be wrong)
+  sort of 200 random-int-points teams with SUBTRACT (b.points - a.points): no exception (result may still be wrong)
+  sort of 200 random-int-points teams with NO_NAME (ignores name tie-break): no exception (result may still be wrong)
+  sort of 200 random-int-points teams with NEVER_ZERO (ties return 1): no exception (result may still be wrong)
+
+Leaderboard<Team> with subtype elements: [Owls(12,9), Ravens(12,9)]
+Same Leaderboard<T> class reused for Strings: [fig, kiwi, pear, apple, banana]
+Bounded generic helper (T extends Comparable<? super T>): [1, 3, 5, 9]
+
+n=400,000 teams (avg of 4 runs): comparator chain = 541.5 ms (1 sort) | three stable sorts = 505.4 ms (3 sorts) | Comparable.compareTo = 281.9 ms (1 sort)
+identical result from all three approaches: true

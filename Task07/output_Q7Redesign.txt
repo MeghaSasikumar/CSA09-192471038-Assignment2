@@ -1,0 +1,14 @@
+N=50,000 medicines, 10 code-order reports, 500 stock updates between reports (updates do not change order)
+per-report averages over the 10 reports, best of 3 runs after 2 warm-ups
+
+new meds per |    ORIG ms     ORIG cmp      ORIG KB |     NEW ms      NEW cmp       NEW KB | speed-up    cmp x  same out
+  report (k) |
+           0 |      34.43       717309          616 |       0.51            0            0 |    67.1x 7173090.0x      true
+           1 |      23.81       717491          616 |       3.42        19959          195 |     7.0x    35.9x      true
+          10 |      23.22       718479          616 |       3.39        46542          196 |     6.8x    15.4x      true
+         100 |      21.71       725634          621 |       2.18        50715          199 |     9.9x    14.3x      true
+       1,000 |      28.33       804013          669 |       4.45        64118          220 |     6.4x    12.5x      true
+      10,000 |      60.78      1625166         1319 |      11.68       225373          474 |     5.2x     7.2x      true
+
+(speed-up = ORIG ms / NEW ms for the report step only; k=0 means nothing was added so the cached view is reused as-is)
+memory trade-off: cached view = 50,000 references ~ 0.2 MB extra at n=50,000 (8 bytes/ref compressed oops: 4)

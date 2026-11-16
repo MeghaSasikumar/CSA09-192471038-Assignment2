@@ -1,0 +1,38 @@
+Time in ms for K=1000 operations (iterate: one full pass), average of 5 runs. n/a = not supported.
+
+---- playlist size N = 1,000 ----
+operation                     ArrayList   LinkedList   ArrayDeque int[] manual
+add at end                        0.198        0.198        0.219        0.013
+insert at front                   0.541        0.117        0.218        0.982
+remove at front                   0.426        0.165        0.062        1.095
+insert in middle                  0.069        1.607          n/a        0.150
+remove from middle                0.040        1.197          n/a        0.059
+get k-th (random k)               0.079        1.118          n/a        0.014
+iterate whole list                0.232        0.246        0.033        0.012
+
+---- playlist size N = 10,000 ----
+operation                     ArrayList   LinkedList   ArrayDeque int[] manual
+add at end                        0.027        0.043        0.023        0.013
+insert at front                   0.317        0.025        0.018        2.818
+remove at front                   0.266        0.017        0.013        1.338
+insert in middle                  0.162        7.407          n/a        0.889
+remove from middle                0.154        6.582          n/a        0.718
+get k-th (random k)               0.029        3.584          n/a        0.018
+iterate whole list                0.315        0.314        0.289        0.114
+
+---- playlist size N = 100,000 ----
+operation                     ArrayList   LinkedList   ArrayDeque int[] manual
+add at end                        0.028        0.031        0.023        0.014
+insert at front                   7.763        0.032        0.024       18.989
+remove at front                   7.754        0.025        0.016       17.890
+insert in middle                  3.888      135.699          n/a       14.216
+remove from middle                4.342      116.963          n/a       10.592
+get k-th (random k)               0.094       70.806          n/a        0.017
+iterate whole list                0.900        1.598        1.732        0.207
+
+---- Changed condition: 'Up Next' queue, 200,000 mixed ops (addFirst, addLast, removeFirst) on a queue holding N songs ----
+           N    ArrayList   LinkedList   ArrayDeque
+       1,000       317.95         7.89         2.58
+      10,000       379.85         3.39         1.78
+     100,000      1412.06        11.40         2.06
+sink=142607761275

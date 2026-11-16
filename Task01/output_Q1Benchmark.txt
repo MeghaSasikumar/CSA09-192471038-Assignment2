@@ -1,0 +1,44 @@
+All six approaches produce identical text: true
+
+== W1-short: 8 fields x 200000 tickets (avg of 5 runs after 3 warm-ups) ==
+approach             avg ms      stdev      us/ticket     bytes/ticket
++ operator            27.74       8.36          0.139              896
+StringBuilder         39.71       3.02          0.199              528
+StringBuffer          27.08      15.71          0.135              536
+String.join           13.38       0.09          0.067              384
+StringJoiner          11.87       3.45          0.059              216
+String.format         67.50       2.22          0.338             1304
+
+== W2-50fields: 50 fields x 10000 tickets (avg of 5 runs after 3 warm-ups) ==
+approach             avg ms      stdev      us/ticket     bytes/ticket
++ operator            12.57       0.09          1.257            23160
+StringBuilder          3.99       0.14          0.399             3296
+StringBuffer           4.60       0.06          0.460             3304
+String.join            3.57       0.04          0.357             1960
+StringJoiner           5.61       0.64          0.561             1456
+String.format         16.02       0.28          1.602             7712
+
+== W3-own-large: 2000 fields x 50 tickets (avg of 5 runs after 2 warm-ups) ==
+approach             avg ms      stdev      us/ticket     bytes/ticket
++ operator           129.08       6.56       2581.612         36165688
+StringBuilder          0.79       0.04         15.848           110640
+StringBuffer           0.90       0.07         18.085           110648
+String.join            0.82       0.04         16.454            81440
+StringJoiner           1.10       0.06         21.968            53248
+String.format          3.49       0.27         69.838           278944
+
+== Scaling of ONE ticket with n fields (us per ticket) ==
+       n        plus us        x          SB us        x      plus/SB
+     250           33.9        -            3.7        -          9.1
+     500          146.1     4.31            6.9     1.86         21.2
+    1000          591.7     4.05            7.9     1.15         74.7
+    2000         2770.8     4.68           15.6     1.97        178.1
+    4000        11647.7     4.20           53.0     3.41        219.8
+    8000        49923.4     4.29           76.3     1.44        653.9
+(x = ratio to previous row; ~4 means quadratic, ~2 means linear)
+
+== Estimated intermediate objects per ticket ==
+n=    8: '+' creates ~7 intermediate Strings (each with a byte[] => ~14 objects); StringBuilder: 3 internal array growths + 1 final String
+n=   50: '+' creates ~49 intermediate Strings (each with a byte[] => ~98 objects); StringBuilder: 6 internal array growths + 1 final String
+n= 2000: '+' creates ~1999 intermediate Strings (each with a byte[] => ~3998 objects); StringBuilder: 11 internal array growths + 1 final String
+sink=2294008000

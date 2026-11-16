@@ -1,0 +1,29 @@
+== T1: same object scanned twice (buggy class) ==
+prediction: 2 | observed: 2   (works only because identity hash code is the same for the same reference)
+
+== T2: two different objects, same regNo (buggy class) ==
+equals() says unique students = 2 | prediction (HashSet): 3 | observed: 3 -> [192311002 Divya, 192311001 Arun, 192311001 Arun]
+over 10000 fresh runs the set had the correct size 2 in 0 runs (a hash-bucket coincidence is not enough: HashMap compares the full hash first)
+a.equals(b) = true, but hashCodes differ: true
+
+== T3: regNo changed AFTER insertion (hashCode uses regNo) ==
+before change: contains(A1) = true
+prediction: size 1, contains(m) false, a second A9 can be added
+after change : size=1, contains(m)=false, contains(new A9)=false, remove(m)=false, still iterable: [A9 Kiran]
+after adding another A9: size=2  (two elements that are equals() to each other -> duplicate in a Set)
+
+== T4: TreeSet whose comparator is inconsistent with equals ==
+p.equals(q) = false | prediction TreeSet size 1 | observed: 1 (TreeSet uses compare()==0 as 'same', never equals())
+
+== T5: corrected class (hashCode from regNo) ==
+prediction 2 | observed 2
+contract: equals -> same hashCode ? true ; hashCode stable across calls ? true
+
+== Alternatives: TreeSet<Student>(Comparator on regNo) and HashMap<String,Student> ==
+TreeSet size = 2, HashMap size = 2
+
+== Scan benchmark: 2n scans of n unique students (each id scanned twice) ==
+         n | HashSet (ns/scan, MB)  | TreeSet (ns/scan, MB)  | HashMap (ns/scan, MB) 
+   100,000 | 243 ns, 6.6 MB         | 817 ns, 6.4 MB         | 270 ns, 6.6 MB        
+   500,000 | 162 ns, 32.2 MB        | 1896 ns, 32.0 MB       | 131 ns, 32.2 MB       
+ 1,000,000 | 233 ns, 64.4 MB        | 2440 ns, 64.0 MB       | 163 ns, 64.4 MB       
